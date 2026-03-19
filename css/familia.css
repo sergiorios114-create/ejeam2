@@ -330,52 +330,58 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 14px;
-  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 16px 22px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 4px;
   z-index: 3;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
 .hero-float-card::before {
-  display: none;
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
 }
 
 .hero-float-card::after {
-  display: none;
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px; height: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), transparent, rgba(255,255,255,0.3));
 }
 
-.float-icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: rgba(255,169,68,0.15);
+.float-number {
+  font-size: 24px;
+  font-weight: 700;
   color: var(--brand);
-  flex-shrink: 0;
+  letter-spacing: -0.02em;
 }
 
 .float-label {
-  font-size: 13px;
-  color: rgba(255,255,255,0.7);
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .hero-float-1 {
-  bottom: 25%;
-  right: -20px;
+  bottom: 15%;
+  right: -10px;
 }
 
 .hero-float-2 {
-  top: 25%;
-  left: -10px;
+  top: 20%;
+  left: -20px;
 }
 
 /* ---- STATS STRIP ---- */
@@ -500,10 +506,8 @@ h2 {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 700px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
 .service-card {
