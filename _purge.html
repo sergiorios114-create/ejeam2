@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJAM — Purge Cache</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Switzer',system-ui,sans-serif;background:#0B1A3E;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .wrap{text-align:center;max-width:420px;padding:40px}
+    h1{font-size:24px;font-weight:700;margin-bottom:12px;letter-spacing:-0.02em}
+    p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:24px}
+    .status{font-size:13px;color:#60A5FA;margin-bottom:20px}
+    .btn{display:inline-block;padding:12px 28px;background:#3B82F6;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s}
+    .btn:hover{background:#2563EB}
+    .done{color:#34D399}
+    .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.2);border-top-color:#60A5FA;border-radius:50%;animation:spin .6s linear infinite;margin-right:8px;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Purge Cache</h1>
+    <p>Limpia todo el cache del sitio y fuerza la recarga completa de CSS, JS e imágenes.</p>
+    <div class="status" id="status"><span class="spinner"></span>Purgando...</div>
+    <a href="index.html" class="btn" id="goBtn" style="display:none">Ir al inicio</a>
+  </div>
+
+  <script>
+    (function(){
+      var status = document.getElementById('status');
+      var goBtn = document.getElementById('goBtn');
+      var steps = [];
+
+      // 1. Clear sessionStorage
+      try { sessionStorage.clear(); steps.push('sessionStorage'); } catch(e){}
+
+      // 2. Clear localStorage
+      try { localStorage.clear(); steps.push('localStorage'); } catch(e){}
+
+      // 3. Unregister service workers
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs){
+          regs.forEach(function(r){ r.unregister(); });
+          if (regs.length) steps.push('Service Workers ('+regs.length+')');
+          finish();
+        }).catch(function(){ finish(); });
+      } else {
+        finish();
+      }
+
+      function finish(){
+        // 4. Clear caches API
+        if ('caches' in window) {
+          caches.keys().then(function(names){
+            return Promise.all(names.map(function(n){ return caches.delete(n); }));
+          }).then(function(results){
+            if (results.length) steps.push('Cache API ('+results.length+')');
+            done();
+          }).catch(function(){ done(); });
+        } else {
+          done();
+        }
+      }
+
+      function done(){
+        status.innerHTML = '<span class="done">Purga completa.</span><br><small style="color:rgba(255,255,255,0.4)">Limpiados: ' + steps.join(', ') + '</small>';
+        goBtn.style.display = 'inline-block';
+        // Add cache-bust to the go button
+        goBtn.href = 'index.html?_purge=' + Date.now();
+      }
+    })();
+  </script>
+</body>
+</html>

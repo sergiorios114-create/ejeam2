@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracias - EJAM Estudio Jurídico</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Tracking + Conversion on page load -->
+  <script src="js/tracking.js"></script>
+  <script src="js/thankyou.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080E20;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .ty-container {
+      text-align: center;
+      max-width: 520px;
+      padding: 40px 24px;
+    }
+    .ty-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+    }
+    .ty-icon svg { stroke: #22c55e; }
+    .ty-title {
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .ty-text {
+      font-size: 15px; color: rgba(255,255,255,0.5);
+      line-height: 1.7; margin-bottom: 32px;
+    }
+    .ty-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .ty-card h3 {
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .ty-step {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .ty-step:last-child { margin-bottom: 0; }
+    .ty-step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(89,132,231,0.15);
+      color: #5984e7;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ty-step p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .ty-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      background: #5984e7; color: #fff;
+      border-radius: 8px; text-decoration: none;
+      font-size: 14px; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .ty-btn:hover { background: #4a73d4; transform: translateY(-1px); }
+    .ty-logo {
+      margin-top: 40px; opacity: 0.2;
+      height: 24px; width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="ty-container">
+    <div class="ty-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h1 class="ty-title">¡Gracias por contactarnos!</h1>
+    <p class="ty-text">Hemos recibido tu consulta correctamente. Un abogado de nuestro equipo se pondrá en contacto contigo a la brevedad.</p>
+    <div class="ty-card">
+      <h3>¿Qué sigue?</h3>
+      <div class="ty-step">
+        <span class="ty-step-num">1</span>
+        <p>Revisaremos tu caso en las próximas horas</p>
+      </div>
+      <div class="ty-step">
+        <span class="ty-step-num">2</span>
+        <p>Un abogado especialista te contactará por teléfono o email</p>
+      </div>
+      <div class="ty-step">
+        <span class="ty-step-num">3</span>
+        <p>Te daremos una evaluación gratuita y los pasos a seguir</p>
+      </div>
+    </div>
+    <a href="index.html" class="ty-btn">Volver al inicio</a>
+    <br>
+    <img src="imgsitio/LOGOS/LOGO GENERAL/logoblanco/EJAM-logocompleto blanco.png" alt="EJAM" class="ty-logo">
+  </div>
+</body>
+</html>

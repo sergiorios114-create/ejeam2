@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJAM - Panel de Administración</title>
+  <link rel="stylesheet" href="css/panel.css">
+</head>
+<body>
+  <div class="panel-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <img src="../imgsitio/LOGOS/LOGO GENERAL/logoblanco/EJAM-logocompleto blanco.png" alt="EJAM" class="sidebar-logo">
+        <span class="sidebar-label">Admin Panel</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="integraciones">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Integraciones Google
+        </a>
+        <a href="#" class="nav-item" data-section="eventos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Eventos y Conversiones
+        </a>
+        <a href="#" class="nav-item" data-section="formularios">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          Formularios
+        </a>
+        <a href="#" class="nav-item" data-section="verificar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Verificar Instalación
+        </a>
+        <a href="#" class="nav-item" data-section="config">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Configuración
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Volver al sitio
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="topbar-title" id="pageTitle">Integraciones Google</h1>
+        <div class="topbar-right">
+          <span class="topbar-date" id="currentDate"></span>
+        </div>
+      </header>
+
+      <!-- INTEGRACIONES SECTION -->
+      <section class="panel-section active" id="sec-integraciones">
+        <!-- Status overview -->
+        <div class="status-overview" id="statusOverview"></div>
+
+        <!-- Google Tag Manager -->
+        <div class="config-card">
+          <div class="card-title-row">
+            <h3>Google Tag Manager</h3>
+            <span class="status-badge" id="gtmBadge">No configurado</span>
+          </div>
+          <p class="config-desc">GTM te permite gestionar todos los tags de marketing (GA4, Ads, Facebook Pixel, etc.) desde un solo lugar sin tocar código.</p>
+          <div class="config-form">
+            <div class="form-group">
+              <label>Container ID</label>
+              <input type="text" placeholder="GTM-XXXXXXX" class="panel-input" id="gtmId">
+              <small class="input-help">Encuéntralo en tagmanager.google.com → tu contenedor → ID en la esquina superior</small>
+            </div>
+            <button class="btn-primary" onclick="saveConfig('gtm')">Guardar</button>
+          </div>
+        </div>
+
+        <!-- Google Analytics 4 -->
+        <div class="config-card">
+          <div class="card-title-row">
+            <h3>Google Analytics 4</h3>
+            <span class="status-badge" id="ga4Badge">No configurado</span>
+          </div>
+          <p class="config-desc">GA4 mide el tráfico del sitio: visitantes, fuentes, páginas más vistas, tiempo de permanencia y eventos de conversión.</p>
+          <div class="config-form">
+            <div class="form-group">
+              <label>Measurement ID</label>
+              <input type="text" placeholder="G-XXXXXXXXXX" class="panel-input" id="ga4Id">
+              <small class="input-help">Encuéntralo en analytics.google.com → Admin → Data Streams → tu stream web</small>
+            </div>
+            <button class="btn-primary" onclick="saveConfig('ga4')">Guardar</button>
+          </div>
+        </div>
+
+        <!-- Google Ads -->
+        <div class="config-card">
+          <div class="card-title-row">
+            <h3>Google Ads — Conversiones</h3>
+            <span class="status-badge" id="gadsBadge">No configurado</span>
+          </div>
+          <p class="config-desc">Permite rastrear qué clics de tus campañas generan formularios enviados o llamadas. Esencial para optimizar tus campañas.</p>
+          <div class="config-form">
+            <div class="form-group">
+              <label>Conversion ID</label>
+              <input type="text" placeholder="AW-XXXXXXXXXX" class="panel-input" id="gadsId">
+              <small class="input-help">En ads.google.com → Tools → Conversions → tu conversión → Tag setup</small>
+            </div>
+            <div class="form-group">
+              <label>Conversion Label — Formulario</label>
+              <input type="text" placeholder="AbCdEfGhIjKl" class="panel-input" id="gadsLabel">
+              <small class="input-help">Se envía automáticamente cuando un visitante envía el formulario de contacto</small>
+            </div>
+            <div class="form-group">
+              <label>Conversion Label — Llamada</label>
+              <input type="text" placeholder="MnOpQrStUvWx" class="panel-input" id="gadsCallLabel">
+              <small class="input-help">Se envía cuando un visitante hace clic en el número telefónico</small>
+            </div>
+            <button class="btn-primary" onclick="saveConfig('gads')">Guardar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTOS SECTION -->
+      <section class="panel-section" id="sec-eventos">
+        <div class="config-card">
+          <h3>Eventos Automáticos</h3>
+          <p class="config-desc">El script <code>tracking.js</code> ya está instalado en todas las páginas del sitio y dispara estos eventos automáticamente cuando GA4 o Google Ads están configurados:</p>
+          <div class="events-list">
+            <div class="event-item">
+              <div class="event-icon green">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="event-detail">
+                <span class="event-name">form_submit</span>
+                <span class="event-desc">Se dispara al enviar el formulario de contacto. Envía conversión a Google Ads (si está configurado) + evento a GA4.</span>
+              </div>
+              <span class="event-target">GA4 + Ads</span>
+            </div>
+            <div class="event-item">
+              <div class="event-icon green">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="event-detail">
+                <span class="event-name">phone_click</span>
+                <span class="event-desc">Se dispara al hacer clic en un enlace telefónico (tel:). Envía conversión de llamada a Ads + evento a GA4.</span>
+              </div>
+              <span class="event-target">GA4 + Ads</span>
+            </div>
+            <div class="event-item">
+              <div class="event-icon blue">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="event-detail">
+                <span class="event-name">click_cta</span>
+                <span class="event-desc">Se dispara al hacer clic en cualquier botón CTA o enlace de navegación. Solo GA4.</span>
+              </div>
+              <span class="event-target">GA4</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="config-card">
+          <h3>Páginas con tracking instalado</h3>
+          <p class="config-desc">El archivo <code>js/tracking.js</code> está incluido en estas páginas:</p>
+          <div class="pages-list">
+            <div class="page-item">
+              <span class="page-dot"></span>
+              <span>index.html</span>
+              <a href="../index.html" target="_blank" class="page-link">Abrir ↗</a>
+            </div>
+            <div class="page-item">
+              <span class="page-dot"></span>
+              <span>deudores.html</span>
+              <a href="../deudores.html" target="_blank" class="page-link">Abrir ↗</a>
+            </div>
+            <div class="page-item">
+              <span class="page-dot"></span>
+              <span>familia.html</span>
+              <a href="../familia.html" target="_blank" class="page-link">Abrir ↗</a>
+            </div>
+            <div class="page-item">
+              <span class="page-dot"></span>
+              <span>pyme.html</span>
+              <a href="../pyme.html" target="_blank" class="page-link">Abrir ↗</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMULARIOS SECTION -->
+      <section class="panel-section" id="sec-formularios">
+        <div class="config-card">
+          <h3>Gestión de Formularios</h3>
+          <p class="config-desc">Visualiza los campos de cada formulario y configura atributos, hidden fields y etiquetas para integraciones.</p>
+
+          <!-- Page Tabs -->
+          <div class="form-tabs">
+            <button class="form-tab active" data-form="index">Inicio</button>
+            <button class="form-tab" data-form="deudores">Deudores</button>
+            <button class="form-tab" data-form="pyme">PYME</button>
+            <button class="form-tab" data-form="familia">Familia</button>
+          </div>
+
+          <!-- Tab Contents (generated by JS) -->
+          <div class="form-tab-content active" id="formtab-index"></div>
+          <div class="form-tab-content" id="formtab-deudores"></div>
+          <div class="form-tab-content" id="formtab-familia"></div>
+          <div class="form-tab-content" id="formtab-pyme"></div>
+        </div>
+
+        <!-- Form Configuration per page -->
+        <div class="config-card">
+          <div class="card-title-row">
+            <h3>Configurar Formulario: <span id="formConfigTitle">Inicio</span></h3>
+            <span class="status-badge" id="formConfigBadge">Sin configurar</span>
+          </div>
+          <p class="config-desc">Agrega atributos y campos ocultos al formulario de la página seleccionada. Estos se aplican dinámicamente vía <code>form-config.js</code>.</p>
+
+          <div class="config-form">
+            <div class="form-group">
+              <label>Form Action (URL de envío)</label>
+              <input type="text" placeholder="https://hooks.example.com/form" class="panel-input" id="formAction">
+              <small class="input-help">La URL donde se enviarán los datos del formulario (webhook, CRM, etc.)</small>
+            </div>
+            <div class="form-group">
+              <label>Form Method</label>
+              <select class="panel-input" id="formMethod">
+                <option value="">Sin definir</option>
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+              </select>
+            </div>
+          </div>
+
+          <h4 class="subsection-title">Thank You Page (Conversión)</h4>
+          <p class="config-desc" style="margin-bottom:12px">Al enviar el formulario, el usuario es redirigido a esta página. La thank you page dispara automáticamente la conversión de Google Ads al cargar.</p>
+          <div class="config-form">
+            <div class="form-group">
+              <label>URL de Thank You Page</label>
+              <input type="text" class="panel-input" id="formThankYou" placeholder="">
+              <small class="input-help" id="thankYouDefault"></small>
+            </div>
+          </div>
+
+          <div class="ty-info">
+            <div class="ty-info-title">Páginas creadas:</div>
+            <div class="ty-info-list">
+              <a href="../gracias-inicio.html" target="_blank">gracias-inicio.html</a>
+              <a href="../gracias-deudores.html" target="_blank">gracias-deudores.html</a>
+              <a href="../gracias-familia.html" target="_blank">gracias-familia.html</a>
+              <a href="../gracias-pyme.html" target="_blank">gracias-pyme.html</a>
+            </div>
+            <p class="ty-info-note">Cada page carga <code>thankyou.js</code> que dispara <code>gtag('event', 'conversion')</code> + <code>generate_lead</code> automáticamente al cargar.</p>
+          </div>
+
+          <h4 class="subsection-title">Campos Hidden</h4>
+          <p class="config-desc" style="margin-bottom:12px">Campos ocultos que se envían con el formulario (útil para identificar fuente, campaña, etc.)</p>
+          <div id="hiddenFieldsList"></div>
+          <button class="btn-secondary" onclick="addHiddenField()">+ Agregar campo hidden</button>
+
+          <h4 class="subsection-title">Atributos data-*</h4>
+          <p class="config-desc" style="margin-bottom:12px">Atributos personalizados en el tag &lt;form&gt; para integraciones (ej: data-form-id, data-campaign)</p>
+          <div id="dataAttrsList"></div>
+          <button class="btn-secondary" onclick="addDataAttr()">+ Agregar atributo</button>
+
+          <div style="margin-top:20px">
+            <button class="btn-primary" onclick="saveFormConfig()">Guardar configuración del formulario</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VERIFICAR SECTION -->
+      <section class="panel-section" id="sec-verificar">
+        <div class="config-card">
+          <h3>Verificar Instalación</h3>
+          <p class="config-desc">Comprueba que tus tags de Google están cargando correctamente en el sitio.</p>
+          <div class="verify-actions">
+            <button class="btn-primary" onclick="runVerification()">Ejecutar verificación</button>
+          </div>
+          <div class="verify-results" id="verifyResults"></div>
+        </div>
+
+        <div class="config-card">
+          <h3>Herramientas Externas</h3>
+          <p class="config-desc">Usa estas herramientas de Google para verificar la instalación en profundidad:</p>
+          <div class="tools-list">
+            <a href="https://tagassistant.google.com/" target="_blank" class="tool-item">
+              <span class="tool-name">Google Tag Assistant</span>
+              <span class="tool-desc">Verifica que GTM, GA4 y Ads están instalados correctamente</span>
+            </a>
+            <a href="https://analytics.google.com/analytics/web/#/realtime" target="_blank" class="tool-item">
+              <span class="tool-name">GA4 Real-Time</span>
+              <span class="tool-desc">Ve usuarios activos en tiempo real para confirmar que GA4 funciona</span>
+            </a>
+            <a href="https://ads.google.com/aw/conversions" target="_blank" class="tool-item">
+              <span class="tool-name">Google Ads Conversions</span>
+              <span class="tool-desc">Revisa el estado de tus conversiones y si están recibiendo datos</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONFIG SECTION -->
+      <section class="panel-section" id="sec-config">
+        <div class="config-card">
+          <h3>Datos del Sitio</h3>
+          <div class="config-form">
+            <div class="form-group">
+              <label>Email de notificaciones</label>
+              <input type="email" value="contacto@ejam.cl" class="panel-input" id="cfgEmail">
+            </div>
+            <div class="form-group">
+              <label>Teléfono principal</label>
+              <input type="tel" value="+56 986 921 292" class="panel-input" id="cfgPhone">
+            </div>
+            <button class="btn-primary" onclick="saveConfig('site')">Guardar</button>
+          </div>
+        </div>
+
+        <div class="config-card danger-zone">
+          <h3>Zona de Limpieza</h3>
+          <p class="config-desc">Elimina toda la configuración guardada. Tendrás que volver a ingresar los IDs de Google.</p>
+          <button class="btn-danger" onclick="clearAllConfig()">Borrar toda la configuración</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/panel.js"></script>
+</body>
+</html>
