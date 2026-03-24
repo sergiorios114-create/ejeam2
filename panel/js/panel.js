@@ -285,9 +285,9 @@ var FORM_FIELDS = {
     { label: 'Nombre completo', origId: 'nombre', origName: 'nombre', type: 'text', required: true },
     { label: 'Email', origId: 'email', origName: 'email', type: 'email', required: true },
     { label: 'Teléfono', origId: 'telefono', origName: 'telefono', type: 'tel', required: true },
-    { label: 'Servicio PYME', origId: 'servicio_pyme', origName: 'servicio_pyme', type: 'select', required: true },
-    { label: 'Tipo empresa', origId: 'tipo_empresa', origName: 'tipo_empresa', type: 'select', required: true },
-    { label: 'Antigüedad', origId: 'antiguedad', origName: 'antiguedad', type: 'select', required: false },
+    { label: 'Tipo deuda tributaria', origId: 'tipo_deuda', origName: 'tipo_deuda', type: 'select', required: true },
+    { label: 'Monto aproximado', origId: 'monto', origName: 'monto', type: 'select', required: false },
+    { label: 'Tipo contribuyente', origId: 'tipo_persona', origName: 'tipo_persona', type: 'select', required: true },
     { label: 'Situación', origId: 'situacion', origName: 'situacion', type: 'textarea', required: false },
     { label: 'Política privacidad', origId: 'politica', origName: 'politica', type: 'checkbox', required: true }
   ]

@@ -858,10 +858,58 @@ h2 {
   line-height: 1.7;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Slider wrapper */
+.testimonials-slider-wrap { position: relative; overflow: hidden; }
+.testimonials-slider { overflow: hidden; }
+.testimonials-track {
+  display: flex;
   gap: 28px;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.testimonials-track .testimonial-card {
+  flex: 0 0 calc((100% - 56px) / 3);
+  max-width: calc((100% - 56px) / 3);
+}
+.testimonials-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+.testimonial-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(8,14,32,0.12);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #0F172A;
+}
+.testimonial-arrow:hover {
+  background: #080E20;
+  color: #fff;
+  border-color: #080E20;
+}
+.testimonials-dots {
+  display: flex;
+  gap: 8px;
+}
+.testimonials-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(8,14,32,0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.testimonials-dots .dot.active {
+  background: #3B82F6;
+  transform: scale(1.2);
 }
 
 .testimonial-card {
@@ -1381,7 +1429,7 @@ h2 {
   .about-features { align-items: center; }
   .about-info .btn { display: inline-flex; }
   .about-header h2 { font-size: 36px; }
-  .testimonials-grid { gap: 20px; }
+  .testimonials-track .testimonial-card { flex: 0 0 calc((100% - 28px) / 2); max-width: calc((100% - 28px) / 2); }
   .cta-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
   .cta-text > p { margin-left: auto; margin-right: auto; }
   .cta-image { order: -1; }
@@ -1420,7 +1468,7 @@ h2 {
   .about-stat-num { font-size: 24px; }
   .about-header h2 { font-size: 30px; }
   .testimonials { padding: 60px 0; }
-  .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 16px; }
+  .testimonials-track .testimonial-card { flex: 0 0 100%; max-width: 100%; }
   .testimonial-card { padding: 24px 20px; }
   .process { padding: 60px 0; }
   .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }

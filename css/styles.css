@@ -437,6 +437,14 @@ body {
   color: rgba(255,255,255,0.25);
 }
 
+.footer-disclaimer-text {
+  font-size: 11px;
+  color: rgba(255,255,255,0.15);
+  line-height: 1.5;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
 .footer-legal {
   display: flex;
   gap: 24px;
